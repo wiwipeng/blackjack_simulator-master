@@ -41,9 +41,9 @@ class Card:
         if self.rank == 1:
             true_rank = 'Ace'
         elif self.rank == 11:
-            true_rank = 'Jack'
+            true_rank = 'Jack傑克'
         elif self.rank == 12:
-            true_rank = 'Queen'
+            true_rank = '皇后'
         elif self.rank == 13:
             true_rank = 'King'
         else:
