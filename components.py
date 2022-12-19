@@ -25,11 +25,11 @@ class Card:
         else:
             self.short_rank = str(self.rank)
 
-        if self.suit == 'Spades':
+        if self.suit == '黑桃':
             self.short_suit = 'S'
-        elif self.suit == 'Hearts':
+        elif self.suit == '紅心':
             self.short_suit = 'H'
-        elif self.suit == 'Clubs':
+        elif self.suit == '梅花':
             self.short_suit = 'C'
         else:
             self.short_suit = 'D'
