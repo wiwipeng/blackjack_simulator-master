@@ -184,31 +184,31 @@ class GamePlay:
                 self.commentary.append(
                     "你爆牌了。錢錢是我的了:)")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
-                self.commentary.append("你拿到Blackjack 21點. 我輸了:(  你贏了 {} 倍的獎金".format(
+                self.commentary.append("你拿到Blackjack. 我輸了:(  你贏了 {} 倍的獎金".format(
                     str(self.blackjack_multiplier)))
             else:
-                self.commentary.append("Dealer turn can proceed as normal")
+                self.commentary.append("莊家繼續")
                 self.dealer_turn()
                 if self.dealer.best_outcome == 'Bust':
                     self.commentary.append(
-                        "Dealer busted. Player wins their initial bet")
+                        "我爆牌了，你可以拿走你的錢錢了")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome == 'Blackjack':
                     self.commentary.append(
-                        "Dealer and Player both have Blackjack. Player retains their initial bet")
+                        "我們運氣真好 都拿到21點. 你可以拿走你的錢錢了")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome != 'Blackjack':
                     self.commentary.append(
-                        "Dealer has Blackjack. Player loses their initial bet")
+                        "我拿到21點了，我要拿走你的錢錢了，哈哈")
                 elif self.dealer.best_outcome != 'Blackjack' and self.player.best_outcome == 'Blackjack':
-                    self.commentary.append("Player has Blackjack. Player wins {} times their initial bet".format(
+                    self.commentary.append("該死！你怎麼拿到Blackjack. 你贏了 {} 倍的獎金".format(
                         str(self.blackjack_multiplier)))
                 elif int(self.dealer.best_outcome) == int(self.player.best_outcome):
                     self.commentary.append(
-                        "Dealer and Player have same score. Player retains their initial bet")
+                        "和局")
                 elif int(self.dealer.best_outcome) > int(self.player.best_outcome):
-                    self.commentary.append("Dealer has {} whereas Player has {}. Player loses their initial bet".format(
+                    self.commentary.append("我有 {} 點，你拿到了 {} 點. 你的錢錢是我的了:)".format(
                         str(self.dealer.best_outcome), str(self.player.best_outcome)))
                 else:
-                    self.commentary.append("Dealer has {} whereas Player has {}. Player wins their initial bet".format(
+                    self.commentary.append("我有 {} 點，你拿到了 {} 點. 我的錢錢是你的了:(".format(
                         str(self.dealer.best_outcome), str(self.player.best_outcome)))
         else:
             pass
