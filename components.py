@@ -1,6 +1,6 @@
 import random
 
-suits = ('Spades', 'Hearts', 'Clubs', 'Diamonds')
+suits = ('黑桃', '紅心', '梅花', '方塊')
 
 
 class Card:
