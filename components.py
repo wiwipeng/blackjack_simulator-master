@@ -114,7 +114,7 @@ class Player(Dealer):
         self.possible_actions = ['No deal yet']
 
     def __repr__(self):
-        return 'Player Hand: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
+        return '你的手牌: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
 
     def stand(self, game_play):
         self.possible_actions = []
