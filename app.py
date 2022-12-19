@@ -20,9 +20,9 @@ def start_game():
 
 game_deck, dealer, player, game_play = start_game()
 
-st.title('BlackJack Simulator')
+st.title('二十一點模擬器')
 
-if st.button('New hand?'):
+if st.button('開始新遊戲'):
     game_play.deal_in()
 
 
@@ -37,18 +37,18 @@ result = st.empty()
 
 
 if 'Hit' in player.possible_actions:
-    if player_hit_option.button('Hit'):
+    if player_hit_option.button('發牌'):
         player.player_hit(game_deck, game_play)
         if 'Hit' not in player.possible_actions:
             player_hit_option.empty()
 if 'Double Down' in player.possible_actions:
-    if player_double_down_option.button('Double Down'):
+    if player_double_down_option.button('雙倍下注'):
         player.double_down(game_deck, game_play)
         player_double_down_option.empty()
         player_hit_option.empty()
         player_stand_option.empty()
 if 'Stand' in player.possible_actions:
-    if player_stand_option.button('Stand'):
+    if player_stand_option.button('停牌'):
         player.stand(game_play)
         player_hit_option.empty()
         player_double_down_option.empty()
