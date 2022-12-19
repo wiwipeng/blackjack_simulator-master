@@ -83,7 +83,7 @@ class Dealer:
         self.best_outcome = 'Awaiting deal'
 
     def __repr__(self):
-        return 'Dealer Hand: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
+        return '我的手牌: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
 
     def hit(self, game_deck):
         draw_card = game_deck.draw()
