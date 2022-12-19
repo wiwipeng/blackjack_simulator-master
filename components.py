@@ -182,9 +182,9 @@ class GamePlay:
         if len(self.player.possible_actions) == 0:
             if self.player.best_outcome == 'Bust':
                 self.commentary.append(
-                    "Player busted. No need for Dealer to go. Player loses their initial bet")
+                    "你爆牌了。錢錢是我的了:)")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
-                self.commentary.append("Player has Blackjack. Dealer has no chance to hit Blackjack. Player wins {} times their initial bet".format(
+                self.commentary.append("你拿到Blackjack 21點. 我輸了:(  你贏了 {} 倍的獎金".format(
                     str(self.blackjack_multiplier)))
             else:
                 self.commentary.append("Dealer turn can proceed as normal")
