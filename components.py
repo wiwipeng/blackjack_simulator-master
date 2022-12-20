@@ -92,7 +92,7 @@ class Dealer:
         self.hand_scores = [a + b for a,
                             b in zip(self.hand_scores, card_scores)]
         if len(self.cards) <= 1:
-            self.best_outcome = 'Awaiting Deal'
+            self.best_outcome = 'Awaiting Deal等待'
         elif 21 in self.hand_scores and len(self.cards) == 2:
             self.best_outcome = 'Blackjack'
         elif self.hand_scores[0] > 21 and self.hand_scores[1] > 21:
@@ -169,14 +169,14 @@ class GamePlay:
             self.commentary.append('Dealer went Bust')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
-                'Dealer has {}, Dealer has to hit'.format(self.dealer.best_outcome))
+                '我有 {}, 我繼續發牌'.format(self.dealer.best_outcome))
             self.dealer_turn()
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
             self.commentary.append('Dealer has a soft 17, Dealer has to hit')
             self.dealer_turn()
         else:
             self.commentary.append(
-                'Dealer is proceeding with {}'.format(self.dealer.best_outcome))
+                '我再抽卡Dealer is proceeding with {}'.format(self.dealer.best_outcome))
 
     def update(self):
         if len(self.player.possible_actions) == 0:
