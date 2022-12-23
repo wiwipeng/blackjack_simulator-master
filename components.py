@@ -41,9 +41,9 @@ class Card:
         if self.rank == 1:
             true_rank = 'Ace'
         elif self.rank == 11:
-            true_rank = 'Jack傑克'
+            true_rank = 'Jack'
         elif self.rank == 12:
-            true_rank = '皇后'
+            true_rank = 'Queen'
         elif self.rank == 13:
             true_rank = 'King'
         else:
@@ -92,11 +92,11 @@ class Dealer:
         self.hand_scores = [a + b for a,
                             b in zip(self.hand_scores, card_scores)]
         if len(self.cards) <= 1:
-            self.best_outcome = 'Awaiting Deal等待'
+            self.best_outcome = '等待中'
         elif 21 in self.hand_scores and len(self.cards) == 2:
-            self.best_outcome = 'Blackjack'
+            self.best_outcome = '21點'
         elif self.hand_scores[0] > 21 and self.hand_scores[1] > 21:
-            self.best_outcome = 'Bust'
+            self.best_outcome = '爆牌'
         else:
             self.best_outcome = max([i for i in self.hand_scores if i <= 21])
 
@@ -133,7 +133,7 @@ class Player(Dealer):
     def get_possibilities(self, game_play):
         if self.best_outcome in ['Blackjack', 'Bust', 21]:
             self.possible_actions = []
-            game_play.commentary.append('Player has no options你沒有選擇')
+            game_play.commentary.append('哈哈，你沒輒了')
         elif len(self.cards) == 2:
             self.possible_actions = ['Hit', 'Stand', 'Double Down']
             game_play.commentary.append(
