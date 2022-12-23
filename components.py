@@ -131,7 +131,7 @@ class Player(Dealer):
         self.get_possibilities(game_play)
 
     def get_possibilities(self, game_play):
-        if self.best_outcome in ['Blackjack', 'Bust', 21]:
+        if self.best_outcome in ['Blackjack', 'Bust爆牌', 21]:
             self.possible_actions = []
             game_play.commentary.append('Player has no options')
         elif len(self.cards) == 2:
