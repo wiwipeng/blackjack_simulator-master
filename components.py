@@ -96,7 +96,7 @@ class Dealer:
         elif 21 in self.hand_scores and len(self.cards) == 2:
             self.best_outcome = 'Blackjack'
         elif self.hand_scores[0] > 21 and self.hand_scores[1] > 21:
-            self.best_outcome = 'Bust'
+            self.best_outcome = 'Bust爆牌'
         else:
             self.best_outcome = max([i for i in self.hand_scores if i <= 21])
 
@@ -165,7 +165,7 @@ class GamePlay:
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
             self.commentary.append('Dealer hit Blackjack')
-        elif self.dealer.best_outcome == 'Bust':
+        elif self.dealer.best_outcome == 'Bust爆牌':
             self.commentary.append('Dealer went Bust')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
@@ -180,7 +180,7 @@ class GamePlay:
 
     def update(self):
         if len(self.player.possible_actions) == 0:
-            if self.player.best_outcome == 'Bust':
+            if self.player.best_outcome == 'Bust爆牌':
                 self.commentary.append(
                     "Player busted. No need for Dealer to go. Player loses their initial bet")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
@@ -189,7 +189,7 @@ class GamePlay:
             else:
                 self.commentary.append("Dealer turn can proceed as normal")
                 self.dealer_turn()
-                if self.dealer.best_outcome == 'Bust':
+                if self.dealer.best_outcome == 'Bust爆牌':
                     self.commentary.append(
                         "Dealer busted. Player wins their initial bet")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome == 'Blackjack':
