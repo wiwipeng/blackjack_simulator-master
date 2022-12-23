@@ -118,7 +118,7 @@ class Player(Dealer):
 
     def stand(self, game_play):
         self.possible_actions = []
-        game_play.commentary.append('玩家繼續發牌')
+        game_play.commentary.append('玩家停牌')
 
     def double_down(self, game_deck, game_play):
         self.hit(game_deck)
@@ -127,7 +127,7 @@ class Player(Dealer):
 
     def player_hit(self, game_deck, game_play):
         self.hit(game_deck)
-        game_play.commentary.append('玩家停牌')
+        game_play.commentary.append('玩家繼續發牌')
         self.get_possibilities(game_play)
 
     def get_possibilities(self, game_play):
