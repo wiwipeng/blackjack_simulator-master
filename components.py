@@ -1,6 +1,6 @@
 import random
 
-suits = ('Spades', 'Hearts', 'Clubs', 'Diamonds')
+suits = ('黑桃', '紅心', '梅花', '方塊')
 
 
 class Card:
@@ -25,11 +25,11 @@ class Card:
         else:
             self.short_rank = str(self.rank)
 
-        if self.suit == 'Spades':
+        if self.suit == '黑桃':
             self.short_suit = 'S'
-        elif self.suit == 'Hearts':
+        elif self.suit == '紅心':
             self.short_suit = 'H'
-        elif self.suit == 'Clubs':
+        elif self.suit == '梅花':
             self.short_suit = 'C'
         else:
             self.short_suit = 'D'
@@ -83,7 +83,7 @@ class Dealer:
         self.best_outcome = 'Awaiting deal'
 
     def __repr__(self):
-        return 'Dealer Hand: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
+        return '莊家的牌: {}, 點數: {}, 最佳牌面: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
 
     def hit(self, game_deck):
         draw_card = game_deck.draw()
@@ -92,11 +92,11 @@ class Dealer:
         self.hand_scores = [a + b for a,
                             b in zip(self.hand_scores, card_scores)]
         if len(self.cards) <= 1:
-            self.best_outcome = 'Awaiting Deal'
+            self.best_outcome = '等待中'
         elif 21 in self.hand_scores and len(self.cards) == 2:
             self.best_outcome = 'Blackjack'
         elif self.hand_scores[0] > 21 and self.hand_scores[1] > 21:
-            self.best_outcome = 'Bust'
+            self.best_outcome = '爆牌'
         else:
             self.best_outcome = max([i for i in self.hand_scores if i <= 21])
 
