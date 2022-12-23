@@ -80,7 +80,7 @@ class Dealer:
     def __init__(self):
         self.cards = []
         self.hand_scores = [0, 0]
-        self.best_outcome = 'Awaiting deal'
+        self.best_outcome = '等待中'
 
     def __repr__(self):
         return '莊家的牌: {}, 點數: {}, 最佳牌面: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
@@ -103,31 +103,31 @@ class Dealer:
     def reset(self):
         self.cards.clear()
         self.hand_scores = [0, 0]
-        self.best_outcome = 'Awaiting deal'
+        self.best_outcome = '等待中'
 
 
 class Player(Dealer):
     def __init__(self):
         self.cards = []
         self.hand_scores = [0, 0]
-        self.best_outcome = 'Awaiting deal'
+        self.best_outcome = '等待中'
         self.possible_actions = ['No deal yet']
 
     def __repr__(self):
-        return 'Player Hand: {}, Scores: {}, Best Outcome: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
+        return '你的手牌: {}, 點數: {}, 最佳牌面: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
 
     def stand(self, game_play):
         self.possible_actions = []
-        game_play.commentary.append('Player is standing')
+        game_play.commentary.append('玩家繼續發牌')
 
     def double_down(self, game_deck, game_play):
         self.hit(game_deck)
-        game_play.commentary.append('Player is doubling down')
+        game_play.commentary.append('玩家雙倍下注')
         self.possible_actions = []
 
     def player_hit(self, game_deck, game_play):
         self.hit(game_deck)
-        game_play.commentary.append('Player has hit')
+        game_play.commentary.append('玩家停牌')
         self.get_possibilities(game_play)
 
     def get_possibilities(self, game_play):
