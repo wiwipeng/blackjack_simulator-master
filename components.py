@@ -152,20 +152,15 @@ class GamePlay:
         self.commentary = []
 
     def __repr__(self):
-        return "實況: {}".format(self.commentary)
+        return "結果: {}".format(self.commentary)
 
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
-            self.commentary.append('哈哈笑你！我拿到21點')
         elif self.dealer.best_outcome == '爆牌':
-            self.commentary.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
-            self.commentary.append(
-                '我拿到 {}, 我繼續要牌'.format(self.dealer.best_outcome))
             self.dealer_turn()
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
-            self.commentary.append('我小於17點，我要繼續要牌')
             self.dealer_turn()
         else:
             self.commentary.append(
