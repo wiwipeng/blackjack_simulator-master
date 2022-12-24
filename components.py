@@ -153,6 +153,9 @@ class GamePlay:
     
     def __repr__(self):
         return "實況: {}".format(self.commentary)
+ 
+    def dealer_turn(self):
+        self.dealer.hit(self.game_deck)
 
     def update(self):
         if len(self.player.possible_actions) == 0:
