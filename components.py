@@ -133,14 +133,14 @@ class Player(Dealer):
     def get_possibilities(self, game_play):
         if self.best_outcome in ['Blackjack', 'Bust爆牌', 21]:
             self.possible_actions = []
-            game_play.commentary.append('Player has no options')
+            game_play.commentary.append('哈哈，你沒輒了')
         elif len(self.cards) == 2:
             self.possible_actions = ['Hit', 'Stand', 'Double Down']
             game_play.commentary.append(
-                'Player can still hit, double down or stand')
+                '你現在在可以發牌或雙倍下注或停牌')
         else:
             self.possible_actions = ['Hit', 'Stand']
-            game_play.commentary.append('Player can still hit or stand')
+            game_play.commentary.append('你現在可以發牌或停牌')
 
     def reset(self):
         self.cards = []
