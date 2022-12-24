@@ -182,7 +182,7 @@ class GamePlay:
         if len(self.player.possible_actions) == 0:
             if self.player.best_outcome == 'Bust爆牌':
                 self.commentary.append(
-                    "你爆牌了。錢錢是我的了:)")
+                    "你爆牌了。錢錢是我的了*⸜( •ᴗ• )⸝*")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
                 self.commentary.append("拿到Blackjack. 我輸了:(  你贏了 {} 倍的獎金(;´༎ຶД༎ຶ`)".format(
                     str(self.blackjack_multiplier)))
