@@ -169,10 +169,10 @@ class GamePlay:
             self.commentary.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
-                '我拿到 {}, 我繼續發牌'.format(self.dealer.best_outcome))
+                '我拿到 {}, 我繼續要牌'.format(self.dealer.best_outcome))
             self.dealer_turn()
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
-            self.commentary.append('我小於17點，我要繼續發牌')
+            self.commentary.append('我小於17點，我要繼續要牌')
             self.dealer_turn()
         else:
             self.commentary.append(
