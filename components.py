@@ -158,8 +158,6 @@ class GamePlay:
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
             
-        elif self.dealer.best_outcome == '爆牌':
-            
         elif int(self.dealer.best_outcome) < 17:
             self.dealer_turn()
             
