@@ -37,7 +37,7 @@ result = st.empty()
 
 
 if 'Hit' in player.possible_actions:
-    if player_hit_option.button('發牌'):
+    if player_hit_option.button('要牌'):
         player.player_hit(game_deck, game_play)
         if 'Hit' not in player.possible_actions:
             player_hit_option.empty()
