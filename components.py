@@ -156,9 +156,16 @@ class GamePlay:
  
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
-        if int(self.dealer.best_outcome) < 17:
+        if self.dealer.best_outcome == 'Blackjack':
+            self.commentary.append('哈哈笑你！我拿到21點')
+        elif self.dealer.best_outcome == '爆牌':
+            self.commentary.append('我爆了:(')
+        elif int(self.dealer.best_outcome) < 17:
+            self.commentary.append(
+                '我拿到 {}, 我繼續要牌'.format(self.dealer.best_outcome))
             self.dealer_turn()
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
+            self.commentary.append('我小於17點，我要繼續要牌')
             self.dealer_turn()
         else:
             self.commentary.append(
@@ -170,31 +177,31 @@ class GamePlay:
                 self.commentary.append(
                     "你爆牌了。錢錢是我的了*⸜( •ᴗ• )⸝*")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
-                self.commentary.append("你拿到21點. 我輸了:( 你贏了 {} 倍的獎金༎ຶ‿༎ຶ ".format(
+                self.commentary.append("你拿到21點 你贏了 {} 倍的獎金".format(
                     str(self.blackjack_multiplier)))
             else:
-                self.commentary.append("莊家繼續")
                 self.dealer_turn()
                 if self.dealer.best_outcome == '爆牌':
                     self.commentary.append(
-                        "哇!! 我爆牌了，你可以拿走錢錢了(⑉꒦ິ^꒦ິ⑉)")
+                        "哇!! 我爆牌 你贏了")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome == 'Blackjack':
                     self.commentary.append(
                         "我們運氣真好 都拿到21點. 你可以拿回你的錢錢了")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome != 'Blackjack':
-                    self.commentary.append("我拿到21點了 我要拿走你 {} 倍的錢錢 ･◡･ ".format(
+                    self.commentary.append("我拿到21點了 我贏走你 {} 倍的錢錢 ･◡･ ".format(
                         str(self.blackjack_multiplier)))
                 elif int(self.dealer.best_outcome) == int(self.player.best_outcome):
                     self.commentary.append(
                         "和局")
                 elif int(self.dealer.best_outcome) > int(self.player.best_outcome):
-                    self.commentary.append("我有 {} 點，你拿到了 {} 點. 你的錢錢是我的了(˶˚ ᗨ ˚˶)".format(
+                    self.commentary.append("我有 {} 點，你拿到了 {} 點 我贏了(˶˚ ᗨ ˚˶)".format(
                         str(self.dealer.best_outcome), str(self.player.best_outcome)))
                 else:
-                    self.commentary.append("我有 {}，你拿到了  {}點.我的錢錢是你的了".format(
+                    self.commentary.append("我有 {} 點，你拿到了 {}點 你贏了".format(
                         str(self.dealer.best_outcome), str(self.player.best_outcome)))
         else:
             pass
+
 
     def reset(self):
         self.commentary = []
