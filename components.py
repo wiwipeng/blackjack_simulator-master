@@ -115,33 +115,7 @@ class Player(Dealer):
 
     def __repr__(self):
         return '你的手牌: {}, 點數: {}, 最佳牌面: {}'.format(self.cards, list(set(self.hand_scores)), self.best_outcome)
-
-    def stand(self, game_play):
-        self.possible_actions = []
-        game_play.commentary.append('玩家停牌')
-
-    def double_down(self, game_deck, game_play):
-        self.hit(game_deck)
-        game_play.commentary.append('玩家雙倍下注')
-        self.possible_actions = []
-
-    def player_hit(self, game_deck, game_play):
-        self.hit(game_deck)
-        game_play.commentary.append('玩家繼續發牌')
-        self.get_possibilities(game_play)
-
-    def get_possibilities(self, game_play):
-        if self.best_outcome in ['Blackjack', '爆牌', 21]:
-            self.possible_actions = []
-            game_play.commentary.append('你現在沒有辦法選擇')
-        elif len(self.cards) == 2:
-            self.possible_actions = ['Hit', 'Stand', 'Double Down']
-            game_play.commentary.append(
-                '你現在在可以發牌或雙倍下注或停牌')
-        else:
-            self.possible_actions = ['Hit', 'Stand']
-            game_play.commentary.append('你現在可以發牌或停牌')
-
+    
     def reset(self):
         self.cards = []
         self.hand_scores = [0, 0]
