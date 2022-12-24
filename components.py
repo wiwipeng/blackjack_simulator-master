@@ -152,7 +152,7 @@ class GamePlay:
         self.commentary = []
     
     def __repr__(self):
-        return "實況: {}".format(self.commentary)
+        return "結果: {}".format(self.commentary)
  
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
@@ -173,7 +173,6 @@ class GamePlay:
                 self.commentary.append("你拿到21點. 我輸了:( 你贏了 {} 倍的獎金༎ຶ‿༎ຶ ".format(
                     str(self.blackjack_multiplier)))
             else:
-                self.commentary.append("莊家繼續")
                 self.dealer_turn()
                 if self.dealer.best_outcome == '爆牌':
                     self.commentary.append(
