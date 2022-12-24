@@ -159,7 +159,7 @@ class GamePlay:
         if self.dealer.best_outcome == 'Blackjack':
             self.commentary.append('哈哈笑你！我拿到21點')
         elif self.dealer.best_outcome == '爆牌':
-            self.commentary.append('我爆了:(')
+            self.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
                 '我拿到 {}, 我繼續要牌'.format(self.dealer.best_outcome))
