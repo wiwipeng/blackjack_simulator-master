@@ -1,6 +1,6 @@
 import random
 
-suits = ('黑桃')
+suits = ('黑桃', '紅心', '梅花', '方塊')
 
 
 class Card:
@@ -28,11 +28,11 @@ class Card:
         if self.suit == '黑桃':
             self.short_suit = 'S'
         elif self.suit == '紅心':
-            self.short_suit = 'S'
+            self.short_suit = 'H'
         elif self.suit == '梅花':
-            self.short_suit = 'S'
+            self.short_suit = 'C'
         else:
-            self.short_suit = 'S'
+            self.short_suit = 'D'
 
         self.image_location = 'static/images/{}{}.png'.format(
             self.short_rank, self.short_suit)
