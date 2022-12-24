@@ -164,19 +164,19 @@ class GamePlay:
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
-            self.commentary.append('Dealer hit Blackjack')
+            self.commentary.append('Dealer hit Blackjack哈哈！我拿到21點')
         elif self.dealer.best_outcome == 'Bust爆牌':
-            self.commentary.append('Dealer went Bust')
+            self.commentary.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
-                'Dealer has {}, Dealer has to hit'.format(self.dealer.best_outcome))
+                '我拿到 {}, 我繼續發牌'.format(self.dealer.best_outcome))
             self.dealer_turn()
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
-            self.commentary.append('Dealer has a soft 17, Dealer has to hit')
+            self.commentary.append('我小於17點，我要繼續發牌')
             self.dealer_turn()
         else:
             self.commentary.append(
-                'Dealer is proceeding with {}'.format(self.dealer.best_outcome))
+                '?????Dealer is proceeding with {}'.format(self.dealer.best_outcome))
 
     def update(self):
         if len(self.player.possible_actions) == 0:
