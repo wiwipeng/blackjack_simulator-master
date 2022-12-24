@@ -196,9 +196,7 @@ class GamePlay:
                     self.commentary.append(
                         "我們運氣真好 都拿到21點. 你可以拿回你的錢錢了")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome != 'Blackjack':
- #                   self.commentary.append(
-                        "笑你啦 我拿到21點了，我要拿走你的好多錢錢了，哈哈")
-                    self.commentary.append("笑你啦 我拿到21點了 我要拿走你 {} 倍的錢錢(⑉꒦ິ^꒦ິ⑉)".format(
+                    self.commentary.append("笑你啦 我拿到21點了 我要拿走你 {} 倍的錢錢 ･◡･ ".format(
                         str(self.blackjack_multiplier)))
                 elif int(self.dealer.best_outcome) == int(self.player.best_outcome):
                     self.commentary.append(
