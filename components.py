@@ -205,7 +205,7 @@ class GamePlay:
                     self.commentary.append(
                         "和局")
                 elif int(self.dealer.best_outcome) > int(self.player.best_outcome):
-                    self.commentary.append("我有 {} 點，你拿到了 {} 點. 你的錢錢是我的了:)".format(
+                    self.commentary.append("我有 {} 點，你拿到了 {} 點. 你的錢錢是我的了(˶˚ ᗨ ˚˶)".format(
                         str(self.dealer.best_outcome), str(self.player.best_outcome)))
                 else:
                     self.commentary.append("我有 {}，你拿到了  {}點.我的錢錢是你的了".format(
