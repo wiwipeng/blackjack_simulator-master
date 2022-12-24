@@ -132,7 +132,6 @@ class Player(Dealer):
             self.possible_actions = []
         elif len(self.cards) == 2:
             self.possible_actions = ['Hit', 'Stand', 'Double Down']
-            game_play.commentary.append(
         else:
             self.possible_actions = ['Hit', 'Stand']
 
