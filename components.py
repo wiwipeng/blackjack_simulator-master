@@ -133,7 +133,7 @@ class Player(Dealer):
     def get_possibilities(self, game_play):
         if self.best_outcome in ['Blackjack', 'Bust爆牌', 21]:
             self.possible_actions = []
-            game_play.commentary.append('哈哈，你沒輒了')
+            game_play.commentary.append('哈哈，你爆了')
         elif len(self.cards) == 2:
             self.possible_actions = ['Hit', 'Stand', 'Double Down']
             game_play.commentary.append(
@@ -164,7 +164,7 @@ class GamePlay:
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
-            self.commentary.append('Dealer hit Blackjack哈哈！我拿到21點')
+            self.commentary.append('哈哈笑你！我拿到21點')
         elif self.dealer.best_outcome == 'Bust爆牌':
             self.commentary.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
@@ -176,7 +176,7 @@ class GamePlay:
             self.dealer_turn()
         else:
             self.commentary.append(
-                '?????Dealer is proceeding with {}'.format(self.dealer.best_outcome))
+                '我有 {} 點'.format(self.dealer.best_outcome))
 
     def update(self):
         if len(self.player.possible_actions) == 0:
@@ -184,14 +184,14 @@ class GamePlay:
                 self.commentary.append(
                     "你爆牌了。錢錢是我的了:)")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
-                self.commentary.append("拿到Blackjack. 我輸了:(  你贏了 {} 倍的獎金".format(
+                self.commentary.append("拿到Blackjack. 我輸了:(  你贏了 {} 倍的獎金(;´༎ຶД༎ຶ`)".format(
                     str(self.blackjack_multiplier)))
             else:
                 self.commentary.append("莊家繼續")
                 self.dealer_turn()
                 if self.dealer.best_outcome == 'Bust爆牌':
                     self.commentary.append(
-                        "我爆牌了，你可以拿走你的錢錢了")
+                        "哇!! 我爆牌了，你可以拿走錢錢了(⑉꒦ິ^꒦ິ⑉)")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome == 'Blackjack':
                     self.commentary.append(
                         "我們運氣真好 都拿到21點. 你可以拿走你的錢錢了")
@@ -199,7 +199,7 @@ class GamePlay:
                     self.commentary.append(
                         "我拿到21點了，我要拿走你的錢錢了，哈哈")
                 elif self.dealer.best_outcome != 'Blackjack' and self.player.best_outcome == 'Blackjack':
-                    self.commentary.append("該死！你怎麼拿到Blackjack. 你贏了 {} 倍的獎金".format(
+                    self.commentary.append("該死！你怎麼拿到Blackjack. 你贏了 {} 倍的獎金(;´༎ຶД༎ຶ`)".format(
                         str(self.blackjack_multiplier)))
                 elif int(self.dealer.best_outcome) == int(self.player.best_outcome):
                     self.commentary.append(
