@@ -154,21 +154,6 @@ class GamePlay:
     def __repr__(self):
         return "實況: {}".format(self.commentary)
 
-    def dealer_turn(self):
-        self.dealer.hit(self.game_deck)
-        if self.dealer.best_outcome == 'Blackjack':
-            self.commentary.append('')
-        elif self.dealer.best_outcome == '爆牌':
-            self.commentary.append('')
-        elif int(self.dealer.best_outcome) < 17:
-            self.commentary.append('')
-            self.dealer_turn()
-        elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
-            self.commentary.append('')
-            self.dealer_turn()
-        else:
-            self.commentary.append('')
-
     def update(self):
         if len(self.player.possible_actions) == 0:
             if self.player.best_outcome == '爆牌':
