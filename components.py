@@ -131,7 +131,7 @@ class Player(Dealer):
         self.get_possibilities(game_play)
 
     def get_possibilities(self, game_play):
-        if self.best_outcome in ['Blackjack', 'Bust爆牌', 21]:
+        if self.best_outcome in ['Blackjack', '爆牌', 21]:
             self.possible_actions = []
             game_play.commentary.append('哈哈，你爆了')
         elif len(self.cards) == 2:
@@ -165,7 +165,7 @@ class GamePlay:
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
             self.commentary.append('哈哈笑你！我拿到21點')
-        elif self.dealer.best_outcome == 'Bust爆牌':
+        elif self.dealer.best_outcome == '爆牌':
             self.commentary.append('我爆了:(')
         elif int(self.dealer.best_outcome) < 17:
             self.commentary.append(
@@ -180,7 +180,7 @@ class GamePlay:
 
     def update(self):
         if len(self.player.possible_actions) == 0:
-            if self.player.best_outcome == 'Bust爆牌':
+            if self.player.best_outcome == '爆牌':
                 self.commentary.append(
                     "你爆牌了。錢錢是我的了*⸜( •ᴗ• )⸝*")
             elif self.player.best_outcome == 'Blackjack' and self.dealer.cards[0].rank not in [1, 10]:
@@ -189,7 +189,7 @@ class GamePlay:
             else:
                 self.commentary.append("莊家繼續")
                 self.dealer_turn()
-                if self.dealer.best_outcome == 'Bust爆牌':
+                if self.dealer.best_outcome == '爆牌':
                     self.commentary.append(
                         "哇!! 我爆牌了，你可以拿走錢錢了(⑉꒦ິ^꒦ິ⑉)")
                 elif self.dealer.best_outcome == 'Blackjack' and self.player.best_outcome == 'Blackjack':
