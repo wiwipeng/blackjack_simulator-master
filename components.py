@@ -157,11 +157,15 @@ class GamePlay:
     def dealer_turn(self):
         self.dealer.hit(self.game_deck)
         if self.dealer.best_outcome == 'Blackjack':
+            
         elif self.dealer.best_outcome == '爆牌':
+            
         elif int(self.dealer.best_outcome) < 17:
             self.dealer_turn()
+            
         elif int(self.dealer.best_outcome) == 17 and 1 in [card.rank for card in self.dealer.cards]:
             self.dealer_turn()
+            
         else:
             self.commentary.append(
                 '我有 {} 點'.format(self.dealer.best_outcome))
