@@ -96,7 +96,7 @@ class Dealer:
         elif 21 in self.hand_scores and len(self.cards) == 2:
             self.best_outcome = 'Blackjack'
         elif self.hand_scores[0] > 21 and self.hand_scores[1] > 21:
-            self.best_outcome = '1爆牌'
+            self.best_outcome = '爆牌'
         else:
             self.best_outcome = max([i for i in self.hand_scores if i <= 21])
 
