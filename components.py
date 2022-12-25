@@ -28,7 +28,7 @@ class Card:
         if self.suit == '黑桃':
             self.short_suit = 'S'
         elif self.suit == '紅心':
-            self.short_suit = 'H'
+            self.short_suit = 'S'
         elif self.suit == '梅花':
             self.short_suit = 'C'
         else:
